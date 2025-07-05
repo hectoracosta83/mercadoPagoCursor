@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Animated } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
-import { COLORS, SIZES } from '../theme';
+import { COLORS } from '../theme';
 
 export default function HomeScreen({ navigation, balance }) {
   const animatedBal = useRef(new Animated.Value(balance)).current;

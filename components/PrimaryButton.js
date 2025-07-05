@@ -22,6 +22,11 @@ const styles = StyleSheet.create({
     borderRadius: 6,
     alignItems: 'center',
     marginVertical: SIZES.base,
+    shadowColor: '#000',
+    shadowOpacity: 0.1,
+    shadowOffset: { height: 1, width: 0 },
+    shadowRadius: 2,
+    elevation: 3,
   },
   text: {
     color: COLORS.background,

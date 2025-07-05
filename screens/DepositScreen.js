@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 import HeaderBar from '../components/HeaderBar';
 import PrimaryButton from '../components/PrimaryButton';
 import { COLORS, SIZES } from '../theme';
+import InputField from '../components/InputField';
 
 export default function DepositScreen({ navigation, balance, setBalance }) {
   const [amount, setAmount] = useState('');
@@ -23,8 +24,7 @@ export default function DepositScreen({ navigation, balance, setBalance }) {
     <View style={styles.container}>
       <HeaderBar title="Ingresar dinero" navigation={navigation} />
       <Text style={styles.label}>Ingresá el monto</Text>
-      <TextInput
-        style={styles.input}
+      <InputField
         keyboardType="numeric"
         placeholder="$ 0,00"
         value={amount}
@@ -32,6 +32,7 @@ export default function DepositScreen({ navigation, balance, setBalance }) {
           setAmount(text);
           if (error) setError('');
         }}
+        style={styles.input}
       />
       {error ? <Text style={styles.error}>{error}</Text> : null}
       <PrimaryButton title="Confirmar" onPress={handleConfirm} />
@@ -51,11 +52,6 @@ const styles = StyleSheet.create({
     marginVertical: SIZES.base * 2,
   },
   input: {
-    borderWidth: 1,
-    borderColor: COLORS.divider,
-    borderRadius: 6,
-    padding: 14,
-    fontSize: 20,
     marginBottom: SIZES.base * 2,
   },
   error: {

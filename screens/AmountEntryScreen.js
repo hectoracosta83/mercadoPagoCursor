@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 import HeaderBar from '../components/HeaderBar';
+import InputField from '../components/InputField';
+import PrimaryButton from '../components/PrimaryButton';
+import { COLORS, SIZES } from '../theme';
 
 export default function AmountEntryScreen({ route, navigation }) {
   const { recipient } = route.params;
@@ -22,8 +25,7 @@ export default function AmountEntryScreen({ route, navigation }) {
     <View style={styles.container}>
       <HeaderBar title="Ingresá el monto" navigation={navigation} />
       <Text style={styles.title}>Ingresá el monto</Text>
-      <TextInput
-        style={styles.input}
+      <InputField
         keyboardType="numeric"
         placeholder="$ 0,00"
         value={amount}
@@ -31,11 +33,10 @@ export default function AmountEntryScreen({ route, navigation }) {
           setAmount(text);
           if (error) setError('');
         }}
+        style={styles.input}
       />
       {error ? <Text style={styles.error}>{error}</Text> : null}
-      <TouchableOpacity style={styles.button} onPress={handleContinue}>
-        <Text style={styles.buttonText}>Continuar</Text>
-      </TouchableOpacity>
+      <PrimaryButton title="Continuar" onPress={handleContinue} />
     </View>
   );
 }
@@ -52,23 +53,7 @@ const styles = StyleSheet.create({
     marginBottom: 12,
   },
   input: {
-    borderWidth: 1,
-    borderColor: '#ccc',
-    borderRadius: 8,
-    padding: 12,
-    fontSize: 18,
-    marginBottom: 20,
-  },
-  button: {
-    backgroundColor: '#009ee3',
-    padding: 16,
-    borderRadius: 8,
-    alignItems: 'center',
-  },
-  buttonText: {
-    color: '#fff',
-    fontSize: 18,
-    fontWeight: '600',
+    marginBottom: SIZES.base * 2,
   },
   error: {
     color: 'red',

@@ -1,6 +1,8 @@
 import React from 'react';
 import { View, Text, FlatList, TouchableOpacity, StyleSheet } from 'react-native';
 import HeaderBar from '../components/HeaderBar';
+import ListItem from '../components/ListItem';
+import { COLORS } from '../theme';
 
 const recipients = [
   { id: '1', name: 'Acosta Hector Federico', bank: 'Banco Santander Rio' },
@@ -13,15 +15,13 @@ const recipients = [
 export default function RecipientSelectionScreen({ navigation }) {
   const renderItem = ({ item }) => (
     <TouchableOpacity
-      style={styles.item}
       onPress={() => navigation.navigate('AmountEntry', { recipient: item })}
     >
-      <View>
-        <Text style={styles.name}>{item.name}</Text>
-        <Text style={styles.bank}>{item.bank}</Text>
-      </View>
+      <ListItem name={item.name} subtitle={item.bank} />
     </TouchableOpacity>
   );
+
+  const ItemSeparator = () => <View style={{ height: 1, backgroundColor: COLORS.divider }} />;
 
   return (
     <View style={styles.container}>
@@ -30,6 +30,7 @@ export default function RecipientSelectionScreen({ navigation }) {
         data={recipients}
         keyExtractor={item => item.id}
         renderItem={renderItem}
+        ItemSeparatorComponent={ItemSeparator}
         contentContainerStyle={{ paddingVertical: 16 }}
       />
     </View>
@@ -42,18 +43,5 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     padding: 24,
   },
-  item: {
-    paddingVertical: 14,
-    borderBottomWidth: 1,
-    borderColor: '#f1f1f1',
-  },
-  name: {
-    fontSize: 16,
-    fontWeight: '500',
-  },
-  bank: {
-    fontSize: 14,
-    color: '#666',
-    marginTop: 2,
-  },
+  // item styles removed – ListItem handles styling
 });

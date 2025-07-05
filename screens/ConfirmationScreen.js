@@ -1,6 +1,7 @@
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 import HeaderBar from '../components/HeaderBar';
+import PrimaryButton from '../components/PrimaryButton';
 
 export default function ConfirmationScreen({ route, navigation, balance, setBalance }) {
   const { recipient, amount } = route.params;
@@ -33,9 +34,7 @@ export default function ConfirmationScreen({ route, navigation, balance, setBala
         </View>
       </View>
 
-      <TouchableOpacity style={styles.button} onPress={handleTransfer}>
-        <Text style={styles.buttonText}>Transferir</Text>
-      </TouchableOpacity>
+      <PrimaryButton title="Transferir" onPress={handleTransfer} />
     </View>
   );
 }
@@ -70,17 +69,6 @@ const styles = StyleSheet.create({
     fontSize: 18,
   },
   amount: {
-    fontSize: 18,
-    fontWeight: '600',
-  },
-  button: {
-    backgroundColor: '#009ee3',
-    padding: 16,
-    borderRadius: 8,
-    alignItems: 'center',
-  },
-  buttonText: {
-    color: '#fff',
     fontSize: 18,
     fontWeight: '600',
   },
