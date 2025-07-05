@@ -77,6 +77,10 @@ export default function QRScannerScreen({ navigation }) {
           <PrimaryButton title="Reescanear" onPress={() => setScanned(false)} />
         </View>
       )}
+      {/* guía visual */}
+      <View pointerEvents="none" style={styles.reticleWrapper}>
+        <View style={styles.reticle} />
+      </View>
     </View>
   );
 }
@@ -95,5 +99,21 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  reticleWrapper: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  reticle: {
+    width: 200,
+    height: 200,
+    borderWidth: 2,
+    borderColor: 'white',
+    borderStyle: 'dashed',
   },
 });
