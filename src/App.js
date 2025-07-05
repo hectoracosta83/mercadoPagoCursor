@@ -66,7 +66,7 @@ function App() {
         amount: transferAmount,
         date: new Date(),
         operationNumber: Math.floor(Math.random() * 1000000000000) + 100000000000,
-        identificationCode: Math.random().toString(36).substr(2, 9).toUpperCase() + Math.random().toString(36).substr(2, 9).toUpperCase()
+        identificationCode: Math.random().toString(36).substring(2, 11).toUpperCase() + Math.random().toString(36).substring(2, 11).toUpperCase()
       };
       
       setLastTransfer(transfer);
@@ -137,7 +137,14 @@ function App() {
           />
         );
       default:
-        return <HomeScreen />;
+        return (
+          <HomeScreen 
+            balance={balance}
+            onAddMoney={() => navigateToScreen(SCREENS.ADD_MONEY)}
+            onTransfer={() => navigateToScreen(SCREENS.SELECT_RECIPIENT)}
+            onScanQR={handleScanQR}
+          />
+        );
     }
   };
 
