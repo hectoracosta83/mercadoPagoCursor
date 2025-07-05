@@ -34,6 +34,7 @@ export default function HomeScreen({ navigation, balance }) {
         style={styles.actionButton}
         onPress={() => navigation.navigate('Deposit')}
       >
+        <Ionicons name="add" size={20} color={COLORS.background} style={styles.actionIcon} />
         <Text style={styles.actionText}>Ingresar dinero</Text>
       </TouchableOpacity>
 
@@ -41,6 +42,7 @@ export default function HomeScreen({ navigation, balance }) {
         style={styles.actionButton}
         onPress={() => navigation.navigate('Recipients')}
       >
+        <Ionicons name="swap-horizontal" size={20} color={COLORS.background} style={styles.actionIcon} />
         <Text style={styles.actionText}>Transferir</Text>
       </TouchableOpacity>
 
@@ -83,6 +85,9 @@ const styles = StyleSheet.create({
     color: COLORS.background,
     fontSize: 16,
     fontWeight: '600',
+  },
+  actionIcon: {
+    marginRight: 8,
   },
   fab: {
     position: 'absolute',
