@@ -65,13 +65,13 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 18,
     color: COLORS.muted,
-    marginTop: 40,
+    marginTop: 32,
   },
   balance: {
     fontSize: 40,
     fontWeight: 'bold',
-    marginTop: 20,
-    marginBottom: 40,
+    marginTop: 16,
+    marginBottom: 32,
     color: '#000',
   },
   actionButton: {
@@ -94,7 +94,7 @@ const styles = StyleSheet.create({
     fontWeight: '600',
   },
   actionIcon: {
-    marginRight: 8,
+    marginRight: 6,
   },
   fab: {
     position: 'absolute',

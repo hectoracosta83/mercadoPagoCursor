@@ -110,10 +110,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   reticle: {
-    width: 200,
-    height: 200,
+    width: 220,
+    height: 220,
     borderWidth: 2,
-    borderColor: 'white',
-    borderStyle: 'dashed',
+    borderColor: '#FFFFFF',
+    borderRadius: 4,
   },
 });
