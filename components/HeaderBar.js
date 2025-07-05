@@ -51,7 +51,11 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     paddingHorizontal: 4,
-    elevation: 2,
+    elevation: 3,
+    shadowColor: '#000',
+    shadowOpacity: 0.08,
+    shadowOffset: { width: 0, height: 1 },
+    shadowRadius: 2,
   },
   backButton: {
     padding: 8,
@@ -63,7 +67,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   placeholder: {
-    width: 40,
+    width: 44,
   },
   title: {
     flex: 1,

@@ -5,7 +5,7 @@ import { COLORS, SIZES, FONTS } from '../theme';
 export default function PrimaryButton({ title, onPress, disabled }) {
   return (
     <TouchableOpacity
-      style={[styles.button, disabled && { opacity: 0.5 }]}
+      style={[styles.button, disabled && styles.disabledBtn]}
       onPress={onPress}
       activeOpacity={0.8}
       disabled={disabled}
@@ -18,7 +18,8 @@ export default function PrimaryButton({ title, onPress, disabled }) {
 const styles = StyleSheet.create({
   button: {
     backgroundColor: COLORS.primary,
-    paddingVertical: SIZES.base * 2,
+    height: 48,
+    justifyContent: 'center',
     borderRadius: 6,
     alignItems: 'center',
     marginVertical: SIZES.base,
@@ -33,5 +34,8 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: '600',
     fontFamily: FONTS.bold,
+  },
+  disabledBtn: {
+    backgroundColor: '#B3E2F9',
   },
 });
