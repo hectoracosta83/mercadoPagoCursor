@@ -4,10 +4,12 @@ import HeaderBar from '../components/HeaderBar';
 import PrimaryButton from '../components/PrimaryButton';
 import { COLORS, SIZES } from '../theme';
 import InputField from '../components/InputField';
+import { LoadingContext } from '../App';
 
 export default function DepositScreen({ navigation, balance, setBalance }) {
   const [amount, setAmount] = useState('');
   const [error, setError] = useState('');
+  const { setLoading } = React.useContext(LoadingContext);
 
   const handleConfirm = () => {
     const value = parseFloat(amount.replace(',', '.'));
@@ -16,8 +18,12 @@ export default function DepositScreen({ navigation, balance, setBalance }) {
       return;
     }
     setError('');
-    setBalance(prev => prev + value);
-    navigation.navigate('Home');
+    setLoading(true);
+    setTimeout(() => {
+      setBalance(prev => prev + value);
+      setLoading(false);
+      navigation.navigate('Home');
+    }, 800);
   };
 
   return (

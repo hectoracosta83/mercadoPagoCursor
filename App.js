@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
+import Loader from './components/Loader';
 
 import HomeScreen from './screens/HomeScreen';
 import DepositScreen from './screens/DepositScreen';
@@ -13,40 +14,46 @@ import QRScannerScreen from './screens/QRScannerScreen';
 
 const Stack = createStackNavigator();
 
+export const LoadingContext = React.createContext({ setLoading: () => {} });
+
 export default function App() {
   const [balance, setBalance] = useState(0);
+  const [loading, setLoading] = useState(false);
 
   return (
-    <SafeAreaProvider>
-      <NavigationContainer>
-        <Stack.Navigator screenOptions={{ headerShown: false }}>
-          <Stack.Screen name="Home">
-            {props => <HomeScreen {...props} balance={balance} />}
-          </Stack.Screen>
-          <Stack.Screen name="Deposit">
-            {props => (
-              <DepositScreen
-                {...props}
-                balance={balance}
-                setBalance={setBalance}
-              />
-            )}
-          </Stack.Screen>
-          <Stack.Screen name="Recipients" component={RecipientSelectionScreen} />
-          <Stack.Screen name="AmountEntry" component={AmountEntryScreen} />
-          <Stack.Screen name="Confirm">
-            {props => (
-              <ConfirmationScreen
-                {...props}
-                balance={balance}
-                setBalance={setBalance}
-              />
-            )}
-          </Stack.Screen>
-          <Stack.Screen name="Receipt" component={ReceiptScreen} />
-          <Stack.Screen name="QRScanner" component={QRScannerScreen} />
-        </Stack.Navigator>
-      </NavigationContainer>
-    </SafeAreaProvider>
+    <LoadingContext.Provider value={{ setLoading }}>
+      <SafeAreaProvider>
+        <NavigationContainer>
+          <Stack.Navigator screenOptions={{ headerShown: false }}>
+            <Stack.Screen name="Home">
+              {props => <HomeScreen {...props} balance={balance} />}
+            </Stack.Screen>
+            <Stack.Screen name="Deposit">
+              {props => (
+                <DepositScreen
+                  {...props}
+                  balance={balance}
+                  setBalance={setBalance}
+                />
+              )}
+            </Stack.Screen>
+            <Stack.Screen name="Recipients" component={RecipientSelectionScreen} />
+            <Stack.Screen name="AmountEntry" component={AmountEntryScreen} />
+            <Stack.Screen name="Confirm">
+              {props => (
+                <ConfirmationScreen
+                  {...props}
+                  balance={balance}
+                  setBalance={setBalance}
+                />
+              )}
+            </Stack.Screen>
+            <Stack.Screen name="Receipt" component={ReceiptScreen} />
+            <Stack.Screen name="QRScanner" component={QRScannerScreen} />
+          </Stack.Navigator>
+        </NavigationContainer>
+        {loading && <Loader />}
+      </SafeAreaProvider>
+    </LoadingContext.Provider>
   );
 }

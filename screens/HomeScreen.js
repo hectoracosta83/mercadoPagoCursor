@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Animated } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
@@ -6,6 +6,7 @@ import { COLORS } from '../theme';
 
 export default function HomeScreen({ navigation, balance }) {
   const animatedBal = useRef(new Animated.Value(balance)).current;
+  const [displayBal, setDisplayBal] = useState(balance);
 
   useEffect(() => {
     Animated.timing(animatedBal, {
@@ -15,23 +16,19 @@ export default function HomeScreen({ navigation, balance }) {
     }).start();
   }, [balance]);
 
-  const formatted = animatedBal.interpolate({
-    inputRange: [0, 1],
-    outputRange: [0, 1],
+  animatedBal.addListener(({ value }) => {
+    setDisplayBal(value);
   });
 
   return (
     <SafeAreaView style={styles.container}>
       <Text style={styles.title}>Dinero disponible</Text>
-      <Animated.Text
-        style={styles.balance}
-        // eslint-disable-next-line react/no-unstable-nested-components
-      >
-        $ {animatedBal.__getValue().toLocaleString('es-AR', {
+      <Text style={styles.balance}>
+        $ {displayBal.toLocaleString('es-AR', {
           minimumFractionDigits: 2,
           maximumFractionDigits: 2,
         })}
-      </Animated.Text>
+      </Text>
 
       <TouchableOpacity
         style={styles.actionButton}

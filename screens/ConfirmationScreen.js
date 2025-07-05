@@ -2,21 +2,27 @@ import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import HeaderBar from '../components/HeaderBar';
 import PrimaryButton from '../components/PrimaryButton';
+import { LoadingContext } from '../App';
 
 export default function ConfirmationScreen({ route, navigation, balance, setBalance }) {
   const { recipient, amount } = route.params;
+  const { setLoading } = React.useContext(LoadingContext);
 
   const handleTransfer = () => {
     if (balance < amount) {
       alert('Saldo insuficiente');
       return;
     }
-    setBalance(prev => prev - amount);
-    navigation.navigate('Receipt', {
-      recipient,
-      amount,
-      opId: Date.now().toString(36),
-    });
+    setLoading(true);
+    setTimeout(() => {
+      setBalance(prev => prev - amount);
+      setLoading(false);
+      navigation.navigate('Receipt', {
+        recipient,
+        amount,
+        opId: Date.now().toString(36),
+      });
+    }, 1000);
   };
 
   return (
