@@ -2,7 +2,12 @@ import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 
-export default function HeaderBar({ title, navigation, canGoBack = true }) {
+export default function HeaderBar({
+  title,
+  navigation,
+  canGoBack = true,
+  rightIcons = [], // array of { name, onPress }
+}) {
   return (
     <View style={styles.container}>
       {canGoBack ? (
@@ -10,31 +15,55 @@ export default function HeaderBar({ title, navigation, canGoBack = true }) {
           style={styles.backButton}
           onPress={() => navigation.goBack()}
         >
-          <Ionicons name="arrow-back" size={24} color="#000" />
+          <Ionicons name="chevron-back" size={26} color="#000" />
         </TouchableOpacity>
       ) : (
         <View style={styles.placeholder} />
       )}
-      <Text style={styles.title}>{title}</Text>
-      <View style={styles.placeholder} />
+      <Text style={styles.title} numberOfLines={1}>
+        {title}
+      </Text>
+      {rightIcons.length > 0 ? (
+        <View style={styles.rightGroup}>
+          {rightIcons.map((icon, idx) => (
+            <TouchableOpacity
+              key={idx}
+              style={styles.iconBtn}
+              onPress={icon.onPress}
+            >
+              <Ionicons name={icon.name} size={22} color="#000" />
+            </TouchableOpacity>
+          ))}
+        </View>
+      ) : (
+        <View style={styles.placeholder} />
+      )}
     </View>
   );
 }
 
+const BAR_YELLOW = '#FFE600';
+
 const styles = StyleSheet.create({
   container: {
     height: 56,
-    backgroundColor: '#FFE600',
+    backgroundColor: BAR_YELLOW,
     flexDirection: 'row',
     alignItems: 'center',
-    paddingHorizontal: 8,
+    paddingHorizontal: 4,
     elevation: 2,
   },
   backButton: {
     padding: 8,
   },
+  iconBtn: {
+    padding: 8,
+  },
+  rightGroup: {
+    flexDirection: 'row',
+  },
   placeholder: {
-    width: 32,
+    width: 40,
   },
   title: {
     flex: 1,
@@ -42,5 +71,6 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: '600',
     color: '#000',
+    paddingHorizontal: 4,
   },
 });
