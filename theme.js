@@ -21,3 +21,17 @@ export const SIZES = {
   h2: 18,
   h3: 16,
 };
+
+export const TYPO = {
+  h1: { fontSize: 22, fontWeight: '600' },
+  h2: { fontSize: 18, fontWeight: '600' },
+  body: { fontSize: 16, fontWeight: '400' },
+  small: { fontSize: 14, fontWeight: '400' },
+};
+
+export default {
+  COLORS,
+  FONTS,
+  SIZES,
+  TYPO,
+};
