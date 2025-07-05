@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import HeaderBar from '../components/HeaderBar';
 
 export default function ConfirmationScreen({ route, navigation, balance, setBalance }) {
   const { recipient, amount } = route.params;
@@ -19,6 +20,7 @@ export default function ConfirmationScreen({ route, navigation, balance, setBala
 
   return (
     <View style={styles.container}>
+      <HeaderBar title="Confirmar" navigation={navigation} />
       <View style={styles.card}>
         <Text style={styles.recipient}>{recipient.name}</Text>
         <Text style={styles.bank}>{recipient.bank}</Text>

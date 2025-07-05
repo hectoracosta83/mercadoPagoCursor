@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Text, FlatList, TouchableOpacity, StyleSheet } from 'react-native';
+import HeaderBar from '../components/HeaderBar';
 
 const recipients = [
   { id: '1', name: 'Acosta Hector Federico', bank: 'Banco Santander Rio' },
@@ -24,7 +25,7 @@ export default function RecipientSelectionScreen({ navigation }) {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>¿A quién le querés transferir?</Text>
+      <HeaderBar title="¿A quién le querés transferir?" navigation={navigation} />
       <FlatList
         data={recipients}
         keyExtractor={item => item.id}
@@ -40,11 +41,6 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
     padding: 24,
-  },
-  title: {
-    fontSize: 22,
-    fontWeight: '600',
-    marginBottom: 12,
   },
   item: {
     paddingVertical: 14,

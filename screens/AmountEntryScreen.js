@@ -1,26 +1,38 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, StyleSheet, TouchableOpacity } from 'react-native';
+import HeaderBar from '../components/HeaderBar';
 
 export default function AmountEntryScreen({ route, navigation }) {
   const { recipient } = route.params;
   const [amount, setAmount] = useState('');
+  const [error, setError] = useState('');
 
   const handleContinue = () => {
     const value = parseFloat(amount.replace(',', '.'));
     if (isNaN(value) || value <= 0) return;
+    if (isNaN(value) || value <= 0) {
+      setError('Ingresá un monto válido');
+      return;
+    }
+    setError('');
     navigation.navigate('Confirm', { recipient, amount: value });
   };
 
   return (
     <View style={styles.container}>
+      <HeaderBar title="Ingresá el monto" navigation={navigation} />
       <Text style={styles.title}>Ingresá el monto</Text>
       <TextInput
         style={styles.input}
         keyboardType="numeric"
         placeholder="$ 0,00"
         value={amount}
-        onChangeText={setAmount}
+        onChangeText={text => {
+          setAmount(text);
+          if (error) setError('');
+        }}
       />
+      {error ? <Text style={styles.error}>{error}</Text> : null}
       <TouchableOpacity style={styles.button} onPress={handleContinue}>
         <Text style={styles.buttonText}>Continuar</Text>
       </TouchableOpacity>
@@ -57,5 +69,9 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontSize: 18,
     fontWeight: '600',
+  },
+  error: {
+    color: 'red',
+    marginBottom: 8,
   },
 });

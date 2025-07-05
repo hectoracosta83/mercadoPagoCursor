@@ -2,10 +2,11 @@ import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import dayjs from 'dayjs';
 import 'dayjs/locale/es';
+import HeaderBar from '../components/HeaderBar';
 
 dayjs.locale('es');
 
-export default function ReceiptScreen({ route }) {
+export default function ReceiptScreen({ route, navigation }) {
   const { recipient, amount, opId } = route.params;
   const now = dayjs().format('dddd, DD [de] MMMM [de] YYYY a las HH:mm');
 
@@ -17,6 +18,7 @@ export default function ReceiptScreen({ route }) {
 
   return (
     <View style={styles.container}>
+      <HeaderBar title="Comprobante" navigation={navigation} />
       <Text style={styles.title}>Comprobante de transferencia</Text>
       <Text style={styles.date}>{now}</Text>
 

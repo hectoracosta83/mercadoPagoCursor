@@ -1,10 +1,11 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
 
 export default function HomeScreen({ navigation, balance }) {
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <Text style={styles.title}>Dinero disponible</Text>
       <Text style={styles.balance}>
         $ {balance.toLocaleString('es-AR', {
@@ -33,7 +34,7 @@ export default function HomeScreen({ navigation, balance }) {
       >
         <Ionicons name="qr-code" size={30} color="#fff" />
       </TouchableOpacity>
-    </View>
+    </SafeAreaView>
   );
 }
 
@@ -41,7 +42,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingHorizontal: 24,
-    paddingTop: 80,
     backgroundColor: '#fff',
   },
   title: {
@@ -51,7 +51,8 @@ const styles = StyleSheet.create({
   balance: {
     fontSize: 40,
     fontWeight: 'bold',
-    marginVertical: 20,
+    marginTop: 20,
+    marginBottom: 40,
     color: '#000',
   },
   actionButton: {
