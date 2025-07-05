@@ -1,18 +1,37 @@
-import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import React, { useEffect, useRef } from 'react';
+import { View, Text, StyleSheet, TouchableOpacity, Animated } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
+import { COLORS, SIZES } from '../theme';
 
 export default function HomeScreen({ navigation, balance }) {
+  const animatedBal = useRef(new Animated.Value(balance)).current;
+
+  useEffect(() => {
+    Animated.timing(animatedBal, {
+      toValue: balance,
+      duration: 400,
+      useNativeDriver: false,
+    }).start();
+  }, [balance]);
+
+  const formatted = animatedBal.interpolate({
+    inputRange: [0, 1],
+    outputRange: [0, 1],
+  });
+
   return (
     <SafeAreaView style={styles.container}>
       <Text style={styles.title}>Dinero disponible</Text>
-      <Text style={styles.balance}>
-        $ {balance.toLocaleString('es-AR', {
+      <Animated.Text
+        style={styles.balance}
+        // eslint-disable-next-line react/no-unstable-nested-components
+      >
+        $ {animatedBal.__getValue().toLocaleString('es-AR', {
           minimumFractionDigits: 2,
           maximumFractionDigits: 2,
         })}
-      </Text>
+      </Animated.Text>
 
       <TouchableOpacity
         style={styles.actionButton}
@@ -46,7 +65,8 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 18,
-    color: '#999',
+    color: COLORS.muted,
+    marginTop: 40,
   },
   balance: {
     fontSize: 40,
@@ -56,14 +76,14 @@ const styles = StyleSheet.create({
     color: '#000',
   },
   actionButton: {
-    backgroundColor: '#009ee3',
+    backgroundColor: COLORS.primary,
     paddingVertical: 14,
     borderRadius: 8,
     alignItems: 'center',
     marginVertical: 8,
   },
   actionText: {
-    color: '#fff',
+    color: COLORS.background,
     fontSize: 16,
     fontWeight: '600',
   },
@@ -71,7 +91,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     bottom: 32,
     alignSelf: 'center',
-    backgroundColor: '#009ee3',
+    backgroundColor: COLORS.primary,
     width: 64,
     height: 64,
     borderRadius: 32,
