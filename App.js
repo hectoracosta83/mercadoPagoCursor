@@ -24,7 +24,13 @@ export default function App() {
     <LoadingContext.Provider value={{ setLoading }}>
       <SafeAreaProvider>
         <NavigationContainer>
-          <Stack.Navigator screenOptions={{ headerShown: false }}>
+          <Stack.Navigator
+            screenOptions={{
+              headerShown: false,
+              animation: 'slide_from_right',
+              presentation: 'card',
+            }}
+          >
             <Stack.Screen name="Home">
               {props => <HomeScreen {...props} balance={balance} />}
             </Stack.Screen>

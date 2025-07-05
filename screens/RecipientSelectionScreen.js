@@ -5,11 +5,11 @@ import ListItem from '../components/ListItem';
 import { COLORS } from '../theme';
 
 const recipients = [
-  { id: '1', name: 'Acosta Hector Federico', bank: 'Banco Santander Rio' },
-  { id: '2', name: 'Diniger Walter', bank: 'BBVA' },
-  { id: '3', name: 'Kiara Natalia Acosta Giraudo', bank: 'Brubank' },
-  { id: '4', name: 'Saldivia Matias', bank: 'Banco Galicia' },
-  { id: '5', name: 'Rocio Salomon', bank: 'Mercado Pago' },
+  { id: '1', alias: 'ACOSTA.HF', name: 'Acosta Hector Federico', bank: 'Banco Santander Rio' },
+  { id: '2', alias: 'DINIGER.W', name: 'Diniger Walter', bank: 'BBVA' },
+  { id: '3', alias: 'KIARA.ACOSTA', name: 'Kiara Natalia Acosta Giraudo', bank: 'Brubank' },
+  { id: '4', alias: 'SALDIVIA.M', name: 'Saldivia Matias', bank: 'Banco Galicia' },
+  { id: '5', alias: 'ROCIO.S', name: 'Rocio Salomon', bank: 'Mercado Pago' },
 ];
 
 export default function RecipientSelectionScreen({ navigation }) {

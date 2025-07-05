@@ -1,10 +1,10 @@
 export const COLORS = {
-  primary: '#009EE3',
-  yellow: '#FFE600',
+  primary: '#009EE3',  // blue action from Mercado Pago
+  yellow:  '#FFE600',  // header yellow exact
   background: '#FFFFFF',
   text: '#000000',
-  muted: '#666666',
-  divider: '#F1F1F1',
+  muted: '#6D6D6D',    // slightly darker than 666
+  divider: '#EDEDED',  // subtle gray line
   error: '#D32F2F',
 };
 

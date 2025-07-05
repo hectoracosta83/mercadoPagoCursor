@@ -1,9 +1,16 @@
 import React from 'react';
-import { TextInput, StyleSheet } from 'react-native';
+import { TextInput, StyleSheet, Platform } from 'react-native';
 import { COLORS } from '../theme';
 
-export default function InputField(props) {
-  return <TextInput {...props} style={[styles.input, props.style]} />;
+export default function InputField({ style, ...rest }) {
+  return (
+    <TextInput
+      {...rest}
+      keyboardType={rest.keyboardType || (Platform.OS === 'ios' ? 'number-pad' : 'numeric')}
+      maxLength={rest.maxLength || 9}
+      style={[styles.input, style]}
+    />
+  );
 }
 
 const styles = StyleSheet.create({
