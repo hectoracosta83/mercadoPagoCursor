@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Animated } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
-import { COLORS } from '../theme';
+import { COLORS, SIZES } from '../theme';
 
 export default function HomeScreen({ navigation, balance }) {
   const animatedBal = useRef(new Animated.Value(balance)).current;
@@ -76,10 +76,17 @@ const styles = StyleSheet.create({
   },
   actionButton: {
     backgroundColor: COLORS.primary,
-    paddingVertical: 14,
-    borderRadius: 8,
+    height: 48,
+    flexDirection: 'row',
+    justifyContent: 'center',
     alignItems: 'center',
-    marginVertical: 8,
+    borderRadius: 6,
+    marginVertical: SIZES.base,
+    shadowColor: '#000',
+    shadowOpacity: 0.1,
+    shadowOffset: { height: 1, width: 0 },
+    shadowRadius: 2,
+    elevation: 3,
   },
   actionText: {
     color: COLORS.background,
