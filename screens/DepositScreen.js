@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
 import HeaderBar from '../components/HeaderBar';
+import PrimaryButton from '../components/PrimaryButton';
+import { COLORS, SIZES } from '../theme';
 
 export default function DepositScreen({ navigation, balance, setBalance }) {
   const [amount, setAmount] = useState('');
@@ -32,9 +34,7 @@ export default function DepositScreen({ navigation, balance, setBalance }) {
         }}
       />
       {error ? <Text style={styles.error}>{error}</Text> : null}
-      <TouchableOpacity style={styles.button} onPress={handleConfirm}>
-        <Text style={styles.buttonText}>Confirmar</Text>
-      </TouchableOpacity>
+      <PrimaryButton title="Confirmar" onPress={handleConfirm} />
     </View>
   );
 }
@@ -48,26 +48,15 @@ const styles = StyleSheet.create({
   },
   label: {
     fontSize: 22,
-    marginBottom: 12,
+    marginVertical: SIZES.base * 2,
   },
   input: {
     borderWidth: 1,
-    borderColor: '#ccc',
-    borderRadius: 8,
-    padding: 12,
-    fontSize: 18,
-    marginBottom: 20,
-  },
-  button: {
-    backgroundColor: '#009ee3',
-    padding: 16,
-    borderRadius: 8,
-    alignItems: 'center',
-  },
-  buttonText: {
-    color: '#fff',
-    fontSize: 18,
-    fontWeight: '600',
+    borderColor: COLORS.divider,
+    borderRadius: 6,
+    padding: 14,
+    fontSize: 20,
+    marginBottom: SIZES.base * 2,
   },
   error: {
     color: 'red',
