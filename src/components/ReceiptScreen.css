@@ -1,0 +1,350 @@
+.receipt-screen {
+  min-height: 100vh;
+  background-color: var(--bg-gray);
+  display: flex;
+  flex-direction: column;
+}
+
+.content {
+  flex: 1;
+  padding: 16px;
+}
+
+.receipt-card {
+  background-color: var(--bg-white);
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.mp-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 20px;
+  background-color: var(--bg-white);
+  border-bottom: 1px solid var(--border-gray);
+}
+
+.mp-icon {
+  width: 40px;
+  height: 40px;
+  background-color: var(--primary-blue);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 16px;
+}
+
+.mp-text {
+  display: flex;
+  flex-direction: column;
+  gap: -2px;
+}
+
+.mp-name {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--primary-blue);
+  line-height: 1.2;
+}
+
+.transfer-title {
+  padding: 20px;
+  border-bottom: 1px solid var(--border-gray);
+}
+
+.transfer-title h2 {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text-dark);
+  margin-bottom: 4px;
+}
+
+.transfer-date {
+  font-size: 14px;
+  color: var(--text-gray);
+  text-transform: capitalize;
+}
+
+.amount-section {
+  padding: 24px 20px;
+  text-align: center;
+  border-bottom: 1px solid var(--border-gray);
+  background-color: #f8f9fa;
+}
+
+.amount-display {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 8px;
+}
+
+.amount-label {
+  font-size: 14px;
+  color: var(--text-gray);
+  font-weight: 500;
+}
+
+.transfer-participants {
+  padding: 20px;
+  border-bottom: 1px solid var(--border-gray);
+}
+
+.participant {
+  margin-bottom: 24px;
+}
+
+.participant:last-child {
+  margin-bottom: 0;
+}
+
+.participant-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.dot.blue {
+  background-color: var(--primary-blue);
+}
+
+.participant-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-dark);
+}
+
+.participant-info {
+  margin-left: 16px;
+}
+
+.participant-name {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-dark);
+  margin-bottom: 4px;
+}
+
+.participant-id,
+.participant-account,
+.participant-cvu {
+  font-size: 14px;
+  color: var(--text-gray);
+  margin-bottom: 2px;
+}
+
+.participant-account {
+  color: var(--text-dark);
+  font-weight: 500;
+}
+
+.transfer-details {
+  padding: 20px;
+  border-bottom: 1px solid var(--border-gray);
+}
+
+.detail-item {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 12px;
+}
+
+.detail-item:last-child {
+  margin-bottom: 0;
+}
+
+.detail-label {
+  font-size: 14px;
+  color: var(--text-gray);
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+
+.detail-value {
+  font-size: 16px;
+  color: var(--text-dark);
+  font-weight: 600;
+  word-break: break-all;
+}
+
+/* Responsive */
+@media (max-width: 414px) {
+  .content {
+    padding: 12px;
+  }
+  
+  .mp-logo {
+    padding: 16px;
+  }
+  
+  .mp-icon {
+    width: 32px;
+    height: 32px;
+    font-size: 14px;
+  }
+  
+  .mp-name {
+    font-size: 14px;
+  }
+  
+  .transfer-title {
+    padding: 16px;
+  }
+  
+  .transfer-title h2 {
+    font-size: 16px;
+  }
+  
+  .transfer-date {
+    font-size: 13px;
+  }
+  
+  .amount-section {
+    padding: 20px 16px;
+  }
+  
+  .amount-display {
+    font-size: 28px;
+  }
+  
+  .amount-label {
+    font-size: 13px;
+  }
+  
+  .transfer-participants {
+    padding: 16px;
+  }
+  
+  .participant {
+    margin-bottom: 20px;
+  }
+  
+  .participant-name {
+    font-size: 15px;
+  }
+  
+  .participant-id,
+  .participant-account,
+  .participant-cvu {
+    font-size: 13px;
+  }
+  
+  .transfer-details {
+    padding: 16px;
+  }
+  
+  .detail-label {
+    font-size: 13px;
+  }
+  
+  .detail-value {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 375px) {
+  .transfer-title h2 {
+    font-size: 15px;
+  }
+  
+  .transfer-date {
+    font-size: 12px;
+  }
+  
+  .amount-display {
+    font-size: 24px;
+  }
+  
+  .amount-label {
+    font-size: 12px;
+  }
+  
+  .participant-name {
+    font-size: 14px;
+  }
+  
+  .participant-id,
+  .participant-account,
+  .participant-cvu {
+    font-size: 12px;
+  }
+  
+  .detail-label {
+    font-size: 12px;
+  }
+  
+  .detail-value {
+    font-size: 13px;
+  }
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.receipt-card {
+  animation: fadeIn 0.5s ease-out;
+}
+
+.receipt-card > * {
+  animation: fadeIn 0.3s ease-out;
+}
+
+.receipt-card > *:nth-child(1) {
+  animation-delay: 0.1s;
+}
+
+.receipt-card > *:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.receipt-card > *:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+.receipt-card > *:nth-child(4) {
+  animation-delay: 0.4s;
+}
+
+.receipt-card > *:nth-child(5) {
+  animation-delay: 0.5s;
+}
+
+/* Imprimir */
+@media print {
+  .receipt-screen {
+    background-color: white;
+  }
+  
+  .header {
+    display: none;
+  }
+  
+  .content {
+    padding: 0;
+  }
+  
+  .receipt-card {
+    box-shadow: none;
+    border: 1px solid #ddd;
+  }
+}

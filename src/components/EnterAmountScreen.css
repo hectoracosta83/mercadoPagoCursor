@@ -1,0 +1,255 @@
+.enter-amount-screen {
+  min-height: 100vh;
+  background-color: var(--bg-white);
+  display: flex;
+  flex-direction: column;
+}
+
+.content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+  gap: 24px;
+}
+
+.amount-display {
+  text-align: center;
+  padding: 32px 0;
+  background-color: var(--bg-white);
+}
+
+.amount-value {
+  font-size: 64px;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+
+.amount-number {
+  min-width: 100px;
+  text-align: left;
+}
+
+.balance-available {
+  font-size: 16px;
+  color: var(--text-gray);
+  font-weight: 500;
+}
+
+.motive-section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.motive-section label {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--text-dark);
+}
+
+.motive-select {
+  padding: 12px 16px;
+  border: 1px solid var(--border-gray);
+  border-radius: 8px;
+  font-size: 16px;
+  color: var(--text-dark);
+  background-color: var(--bg-white);
+  cursor: pointer;
+  appearance: none;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12"><path d="M6 8L2 4h8z" fill="%23666"/></svg>');
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  padding-right: 40px;
+}
+
+.continue-section {
+  margin-top: auto;
+}
+
+.continue-btn {
+  width: 100%;
+  padding: 16px 24px;
+  border: none;
+  border-radius: 12px;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-height: 56px;
+}
+
+.continue-btn.enabled {
+  background-color: var(--primary-blue);
+  color: white;
+}
+
+.continue-btn.disabled {
+  background-color: var(--bg-gray);
+  color: var(--text-gray);
+  cursor: not-allowed;
+}
+
+.numeric-keypad {
+  background-color: #2c3e50;
+  margin: 0 -24px -24px -24px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.keypad-row {
+  display: flex;
+  gap: 8px;
+}
+
+.keypad-btn {
+  flex: 1;
+  height: 56px;
+  border: none;
+  border-radius: 12px;
+  font-size: 24px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  background-color: #34495e;
+}
+
+.keypad-btn:hover {
+  background-color: #3f566b;
+  transform: scale(1.05);
+}
+
+.keypad-btn:active {
+  transform: scale(0.95);
+}
+
+.keypad-action {
+  background-color: #4a5f7a !important;
+  color: white;
+}
+
+.keypad-action:hover {
+  background-color: #5a6f8a !important;
+}
+
+.keypad-comma,
+.keypad-dot {
+  background-color: #4a5f7a !important;
+}
+
+.keypad-comma:hover,
+.keypad-dot:hover {
+  background-color: #5a6f8a !important;
+}
+
+/* Estados específicos */
+.keypad-btn[disabled] {
+  background-color: #2c3e50 !important;
+  color: #666 !important;
+  cursor: not-allowed;
+}
+
+/* Responsive */
+@media (max-width: 414px) {
+  .content {
+    padding: 16px;
+    gap: 20px;
+  }
+  
+  .amount-display {
+    padding: 24px 0;
+  }
+  
+  .amount-value {
+    font-size: 56px;
+  }
+  
+  .balance-available {
+    font-size: 14px;
+  }
+  
+  .motive-select {
+    padding: 10px 14px;
+    font-size: 14px;
+    padding-right: 36px;
+  }
+  
+  .continue-btn {
+    font-size: 16px;
+    padding: 14px 20px;
+    min-height: 52px;
+  }
+  
+  .numeric-keypad {
+    margin: 0 -16px -16px -16px;
+    padding: 12px;
+  }
+  
+  .keypad-btn {
+    height: 48px;
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 375px) {
+  .amount-value {
+    font-size: 48px;
+  }
+  
+  .balance-available {
+    font-size: 13px;
+  }
+  
+  .motive-section label {
+    font-size: 14px;
+  }
+  
+  .motive-select {
+    font-size: 13px;
+  }
+  
+  .continue-btn {
+    font-size: 15px;
+  }
+  
+  .keypad-btn {
+    height: 44px;
+    font-size: 18px;
+  }
+  
+  .keypad-row {
+    gap: 6px;
+  }
+  
+  .numeric-keypad {
+    gap: 6px;
+  }
+}
+
+/* Animaciones */
+@keyframes buttonPress {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0.95);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.keypad-btn:active {
+  animation: buttonPress 0.1s ease;
+}

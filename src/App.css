@@ -1,0 +1,155 @@
+.App {
+  text-align: center;
+  min-height: 100vh;
+  max-width: 414px;
+  margin: 0 auto;
+  background-color: var(--bg-white);
+  position: relative;
+}
+
+.screen-transition {
+  animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Pantalla inicial específica */
+.home-screen {
+  background-color: var(--bg-gray);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.balance-section {
+  background-color: var(--bg-white);
+  padding: 24px;
+  margin: 16px;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  text-align: left;
+}
+
+.balance-amount {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 8px;
+}
+
+.balance-label {
+  color: var(--text-gray);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.user-info {
+  background-color: var(--bg-white);
+  padding: 20px;
+  margin: 0 16px 16px 16px;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+}
+
+.user-name {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text-dark);
+  margin-bottom: 4px;
+}
+
+.user-id {
+  color: var(--text-gray);
+  font-size: 14px;
+  margin-bottom: 12px;
+}
+
+.actions-section {
+  padding: 0 16px;
+  margin-top: auto;
+  padding-bottom: 24px;
+}
+
+.action-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.action-button {
+  background-color: var(--bg-white);
+  border: 1px solid var(--border-gray);
+  padding: 16px 20px;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--text-dark);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.action-button:hover {
+  background-color: var(--bg-gray);
+  border-color: var(--primary-blue);
+}
+
+.action-button.primary {
+  background-color: var(--primary-blue);
+  color: white;
+  border: none;
+}
+
+.action-button.primary:hover {
+  background-color: #0088cc;
+}
+
+.action-button.secondary {
+  background-color: var(--primary-green);
+  color: white;
+  border: none;
+}
+
+.action-button.secondary:hover {
+  background-color: #008a44;
+}
+
+/* Iconos simulados */
+.icon-qr::before {
+  content: "📱";
+  font-size: 18px;
+}
+
+.icon-money::before {
+  content: "💰";
+  font-size: 18px;
+}
+
+.icon-transfer::before {
+  content: "💸";
+  font-size: 18px;
+}
+
+/* Responsive */
+@media (max-width: 414px) {
+  .balance-section,
+  .user-info {
+    margin: 12px;
+  }
+  
+  .actions-section {
+    padding: 0 12px;
+  }
+}
